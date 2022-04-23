@@ -17,8 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-Menu m=MenuUtil.showMenu();
-MenuUtil.processMenu(m);
+MenuUtil.showMenu();
     }
     
 }

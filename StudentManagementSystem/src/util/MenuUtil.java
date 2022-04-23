@@ -11,15 +11,13 @@ import java.util.Scanner;
  * @author Ilqar
  */
 public class MenuUtil {
-public static Menu showMenu(){
+public static void showMenu(){
     Menu.showAllMenu();
     System.out.println("Please select menu:");
     Scanner scan=new Scanner(System.in);
-    int selectMenu=scan.nextInt();
-   return Menu.find(selectMenu);
-}
-public static void processMenu(Menu menu){
-    menu.process();
+    int selectMenuNumber=scan.nextInt();
+   Menu selectMenu =Menu.find(selectMenuNumber);
+   selectMenu.process();
 }
 
 }

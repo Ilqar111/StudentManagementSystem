@@ -4,6 +4,8 @@
  */
 package service.menu;
 
+import bean.Config;
+import java.util.Scanner;
 import service.menu.inter.MenuLoginServiceInter;
 import service.menu.inter.MenuService;
 
@@ -15,7 +17,16 @@ public class MenuLoginService implements MenuLoginServiceInter {
 
     @Override
     public void procces() {
-        System.out.println("Login");
+        Scanner scan=new Scanner(System.in);
+        System.out.print("Login:");
+        String login=scan.next();
+        scan=new Scanner(System.in);
+        System.out.print("Password:");
+        String password=scan.next();
+        if(!(login.equals("perfect")&&password.equals("123"))){
+            throw new IllegalArgumentException("Login or Password is invalid");
     }
+        Config.setLoggedIn(true);
     
+}
 }
