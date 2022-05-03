@@ -5,6 +5,7 @@
 package bean;
 import java.io.Serializable;
 import java.util.ArrayList;
+import util.FileUtility;
 
 /**
  *
@@ -15,7 +16,15 @@ public class Config implements Serializable{
     
     ArrayList<Teacher> teachers=new ArrayList<>();
     ArrayList<Student> students=new ArrayList<>();
+    ArrayList<Registers> registers=new ArrayList();
 public static Config config=null;
+public static void initialize(){
+    Object obj=FileUtility.readObjectFromFile("app.obj");
+    if(obj== null)
+        return;
+    if(obj instanceof Config)
+        config=(Config)obj;
+}
 private static boolean loggedIn;
     public Teacher[] getTeachers() {
         Teacher[] t=new Teacher[teachers.size()];
@@ -39,6 +48,21 @@ private static boolean loggedIn;
     public void setStudents(Student students) {
         this.students.add(students);
     }
+     public void setRegisters(Registers registers) {
+        this.registers.add(registers);
+    }
+
+    public boolean getRegisters(String login,String password) {
+        for (int i = 0; i < registers.size(); i++){
+            if(registers.get(i).getLogin().equals(login)){
+                if(registers.get(i).getPassword().equals(password)){
+                    return true;
+                }
+            }               
+        }
+        System.out.println("Bele istifadeci tapilmadi.");
+        return false;
+    } 
    public static Config instance(){
        if(config==null)
            config=new Config();

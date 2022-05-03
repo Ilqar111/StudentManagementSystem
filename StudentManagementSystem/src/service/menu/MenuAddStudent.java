@@ -8,6 +8,7 @@ import bean.Config;
 import bean.Student;
 import java.util.Scanner;
 import service.menu.inter.MenuAddStudentInter;
+import util.FileUtility;
 
 /**
  *
@@ -18,11 +19,12 @@ public class MenuAddStudent implements MenuAddStudentInter{
     @Override
     public void procces() {
         Student s=new Student();
-        s.setName(MenuUtil.requireText("Name"));
-        s.setSurname(MenuUtil.requireText("Surname"));
-        s.setSchoolName(MenuUtil.requireText("Schoolname"));
-        s.setScholarship(MenuUtil.requireNumber("Scholarship"));
+        s.setName(MenuServiceUtil.requireText("Name"));
+        s.setSurname(MenuServiceUtil.requireText("Surname"));
+        s.setSchoolName(MenuServiceUtil.requireText("Schoolname"));
+        s.setScholarship(MenuServiceUtil.requireNumber("Scholarship"));
         Config.instance().setStudents(s);
+        FileUtility.writeObjectToFile(Config.instance(),"app.obj");
     }
     
 }

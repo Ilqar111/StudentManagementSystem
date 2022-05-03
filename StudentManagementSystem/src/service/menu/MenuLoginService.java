@@ -17,16 +17,6 @@ public class MenuLoginService implements MenuLoginServiceInter {
 
     @Override
     public void procces() {
-        Scanner scan=new Scanner(System.in);
-        System.out.print("Login:");
-        String login=scan.next();
-        scan=new Scanner(System.in);
-        System.out.print("Password:");
-        String password=scan.next();
-        if(!(login.equals("perfect")&&password.equals("123"))){
-            throw new IllegalArgumentException("Login or Password is invalid");
+      Config.setLoggedIn(Config.instance().getRegisters(MenuServiceUtil.requireText("Login"), MenuServiceUtil.requireText("Password")));  
     }
-        Config.setLoggedIn(true);
-    
-}
 }

@@ -4,8 +4,11 @@
  */
 package service.menu;
 
+import bean.Config;
+import bean.Registers;
 import service.menu.inter.MenuRegisterServiceInter;
 import service.menu.inter.MenuService;
+import util.FileUtility;
 
 /**
  *
@@ -15,7 +18,11 @@ public class MenuRegisterService implements MenuRegisterServiceInter {
 
     @Override
     public void procces() {
-        System.out.println("Register");
+        Registers r=new Registers();
+     r.setLogin(MenuServiceUtil.requireText("Login"));
+     r.setPassword(MenuServiceUtil.requireText("Password"));
+     Config.instance().setRegisters(r);
+        FileUtility.writeObjectToFile(Config.instance(), "app.obj");
     }
     
 }

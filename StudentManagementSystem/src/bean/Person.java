@@ -4,11 +4,13 @@
  */
 package bean;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ilqar
  */
-public class Person {
+public class Person implements Serializable{
    private String name;
    private String surname;
    private int age;

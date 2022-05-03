@@ -56,12 +56,18 @@ public enum Menu {
     public int getNumber() {
         return number;
     }
-    public static Menu find(int number){
+    public static Menu find(int number){       
         Menu menus[]=Menu.values();
          for (int i = 0; i < menus.length; i++) {
+             if(!Config.isLoggedIn()&& (number==1||number==2)){
         if(menus[i].getNumber()==number)
             return menus[i];
     }
+             if(Config.isLoggedIn()&& (number==3||number==4||number==5||number==6)){
+                if(menus[i].getNumber()==number)
+                return menus[i];
+             }
+         }
     return Menu.UNKNOWN;
     }
     public static void showAllMenu(){

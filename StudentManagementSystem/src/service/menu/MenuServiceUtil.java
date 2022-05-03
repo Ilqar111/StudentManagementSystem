@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Ilqar
  */
-public class MenuUtil {
+public class MenuServiceUtil {
     public static String requireText(String title){
         Scanner scan=new Scanner(System.in);
         System.out.print(title+":");

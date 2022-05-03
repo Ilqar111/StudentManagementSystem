@@ -5,6 +5,7 @@
 package util;
 
 import java.util.Scanner;
+import service.menu.MenuServiceUtil;
 
 /**
  *
@@ -13,11 +14,13 @@ import java.util.Scanner;
 public class MenuUtil {
 public static void showMenu(){
     Menu.showAllMenu();
-    System.out.println("Please select menu:");
-    Scanner scan=new Scanner(System.in);
-    int selectMenuNumber=scan.nextInt();
-   Menu selectMenu =Menu.find(selectMenuNumber);
+   Menu selectMenu =Menu.find(MenuServiceUtil.requireNumber("Please select menu"));
+   try{
    selectMenu.process();
+   }catch(Exception e){
+       System.out.println("Duzgun sec.");
+       showMenu();
+   }
 }
 
 }
